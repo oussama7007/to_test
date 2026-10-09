@@ -17,7 +17,7 @@ import { ConfigService  } from '@nestjs/config';
     }),
     TypeOrmModule.forRootAsync(
       {
-        inject: [ConfigModule],
+        inject: [ConfigService],
         useFactory: (configService : ConfigService) => (
           {
             type: 'postgres', 
@@ -30,7 +30,6 @@ import { ConfigService  } from '@nestjs/config';
             synchronize: false,
           }),
       }),
-    ,
     ProfileModule, AuthModule],
   controllers: [AppController, ProfileController],
   providers: [AppService, ProfileService],
