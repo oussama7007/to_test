@@ -11,7 +11,7 @@ export class RegistrationSession {
     @Column()
     lastName: string;
 
-    @Column()
+    @Column({type : 'date'})
     dateOfBirth: string;
 
     @Column()
