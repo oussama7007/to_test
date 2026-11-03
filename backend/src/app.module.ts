@@ -11,7 +11,7 @@ import { AuthModule } from './auth/auth.module.js';
   imports: [
       ConfigModule.forRoot({
     isGlobal: true,
-    
+    envFilePath: '../.env',
      }),
         TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -23,12 +23,12 @@ import { AuthModule } from './auth/auth.module.js';
         host: configService.getOrThrow<string>('DB_HOST'),
         port: Number(configService.getOrThrow<string>('DB_PORT')),
 
-        username: configService.getOrThrow<string>('DB_USERNAME'),
+        username: configService.getOrThrow<string>('DB_USER'),
         password: configService.getOrThrow<string>('DB_PASSWORD'),
         database: configService.getOrThrow<string>('DB_NAME'),
 
         autoLoadEntities: true,
-        synchronize: false,
+        synchronize: true,
       }),
     }),
         AuthModule,
